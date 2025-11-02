@@ -658,8 +658,9 @@
     <div class="hero-grid"></div>
     <div class="hero-content">
       <span class="hero-label">Available for AI, ML, Data Science Roles</span>
+      <h1>                                                              </h1>
       <h1>Advancing <span class="gradient-text">AI & ML Solutions</span></h1>
-      <p class="hero-desc">M.Sc. Data Science @ DA-IICT | Research Intern @ BSES-SELC </p>
+      <p class="hero-desc"> M.Sc. Data Science @ DA-IICT | Research Intern @ BSES-SELC </p>
       <div class="cta-group">
         <a href="#work" class="btn btn-primary"><i class="fas fa-briefcase"></i> View Projects</a>
         <a href="#contact" class="btn btn-secondary"><i class="fas fa-envelope"></i> Get in Touch</a>
@@ -684,7 +685,7 @@
     <div class="section-header">
       <div class="section-label">Core Competencies</div>
       <h2 class="section-title">Technical Skills</h2>
-      <p class="section-desc">Production-ready tools and frameworks</p>
+      <!-- <p class="section-desc">Production-ready tools and frameworks</p> -->
     </div>
 
     <div class="skills-category">
@@ -741,46 +742,160 @@
   </section>
 
   <!-- Projects -->
-  <section id="work">
-    <div class="section-header">
-      <div class="section-label">Portfolio</div>
-      <h2 class="section-title">Projects</h2>
-      <p class="section-desc">Key AI/ML implementations</p>
-    </div>
-    <div class="projects-grid">
-      <div class="project-card">
-        <div class="project-img" style="background-image: url('assets/gemma-project.png'); background-size: cover;"></div>
-        <div class="project-content">
-          <h3>Gemma-3 Financial QnA Fine-tune</h3>
-          <p>F1: 0.128 to 0.628 | LoRA + Unsloth | Deployed on HF</p>
-          <div class="project-tech">
-            <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="HF" width="24"/>
-            <img src="assets/langchain-color.svg" alt="LangChain" style="filter: brightness(0) invert(1); height:20px;" width="60"/>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/Ashish202418007/LLM-Gemma3-270m-finetune-for-financialQA-Application.git" class="project-link"><i class="fab fa-github"></i> Code</a>
-          </div>
+<section id="work">
+  <div class="section-header">
+    <div class="section-label">Portfolio</div>
+    <h2 class="section-title">Projects</h2>
+    <!-- <p class="section-desc">Key AI/ML implementations</p> -->
+  </div>
+  <div class="projects-grid">
+    
+    <!-- 1. Gemma-3 Financial QnA -->
+    <div class="project-card">
+      <div class="project-img" style="background-image: url('assets/gemma-project.png'); background-size: cover; background-position: center;"></div>
+      <div class="project-content">
+        <h3>Gemma-3 Financial QnA Fine-tune</h3>
+        <p>F1: 0.128 to 0.628 | LoRA + Unsloth | Deployed on HF</p>
+        <div class="project-tech">
+          <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="HF" width="24"/>
+          <img src="assets/langchain.png" alt="LangChain" style="filter: brightness(0) invert(1); height:20px;" width="60"/>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Ashish202418007/LLM-Gemma3-270m-finetune-for-financialQA-Application.git" class="project-link"><i class="fab fa-github"></i> Code</a>
         </div>
       </div>
+    </div>
 
-      <div class="project-card">
-        <div class="project-img" style="background-image: url('assets/churn-project.png'); background-size: cover;"></div>
-        <div class="project-content">
-          <h3>Credit Card Churn Prediction</h3>
-          <p>0.89 F1 | SHAP + LIME | GCP Cloud Run</p>
-          <div class="project-tech">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg" width="24" alt="sklearn"/>
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="24" alt="Docker"/>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/Misty033/Credit_Card_Churn_Detection" class="project-link"><i class="fab fa-github"></i> Code</a>
-          </div>
+    <!-- 2. Credit Card Churn -->
+    <div class="project-card">
+      <div class="project-img" style="background-image: url('assets/churn-project.png'); background-size: cover; background-position: center;"></div>
+      <div class="project-content">
+        <h3>Credit Card Churn Prediction</h3>
+        <p>0.89 F1 | SHAP + LIME | GCP Cloud Run</p>
+        <div class="project-tech">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg" width="24" alt="sklearn"/>
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="24" alt="Docker"/>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Misty033/Credit_Card_Churn_Detection" class="project-link"><i class="fab fa-github"></i> Code</a>
         </div>
       </div>
-
-      <!-- Add more with assets/project-name.png -->
     </div>
-  </section>
+
+    <!-- 3. Beer Review Recommender -->
+    <div class="project-card">
+      <div class="project-img" style="background-image: url('assets/beer-recommender.png'); background-size: cover; background-position: center;"></div>
+      <div class="project-content">
+        <h3>Beer Review Recommender</h3>
+        <p>4.5M reviews | Airflow + DBT | FAISS</p>
+        <div class="project-tech">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apacheairflow/apacheairflow-original.svg" width="24" alt="Airflow"/>
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" width="24" alt="GCP"/>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Ashish202418007/ELT-For-MLmodels" class="project-link"><i class="fab fa-github"></i> Code</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Market Basket Analysis -->
+    <div class="project-card">
+      <div class="project-img" style="background-image: url('assets/market-basket.png'); background-size: cover; background-position: center;"></div>
+      <div class="project-content">
+        <h3>Market Basket Analysis</h3>
+        <p>RFM + FP-Growth | K-Means Clustering</p>
+        <div class="project-tech">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="24" alt="Python"/>
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg" width="24" alt="sklearn"/>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Ashish202418007/Market-Busket-Analysis" class="project-link"><i class="fab fa-github"></i> Code</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. PCA Eigenportfolio -->
+    <div class="project-card">
+      <div class="project-img" style="background-image: url('assets/eigenportfolio.png'); background-size: cover; background-position: center;"></div>
+      <div class="project-content">
+        <h3>PCA Eigenportfolio</h3>
+        <p>72.64% CAGR | 1.77 Sharpe | 419 assets</p>
+        <div class="project-tech">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" width="24" alt="Pandas"/>
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" width="24" alt="NumPy"/>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Ashish202418007/Eigenportfolio-Using-PCA" class="project-link"><i class="fab fa-github"></i> Code</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. BERT Triplet Loss Classifier -->
+    <div class="project-card">
+      <div class="project-img" style="background-image: url('assets/bert-sentiment.png'); background-size: cover; background-position: center;"></div>
+      <div class="project-content">
+        <h3>BERT Triplet Loss Classifier</h3>
+        <p>0.75 F1 | 1.3M reviews | Active Learning</p>
+        <div class="project-tech">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" width="24" alt="PyTorch"/>
+          <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" width="24" alt="HF"/>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Yashrajsinh012/Sentiment_Analysis" class="project-link"><i class="fab fa-github"></i> Code</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. Market Structure Analysis -->
+    <div class="project-card">
+      <div class="project-img" style="background-image: url('assets/market-structure.png'); background-size: cover; background-position: center;"></div>
+      <div class="project-content">
+        <h3>Market Structure Analysis</h3>
+        <p>IT Sector Clustering | NIFTY50 | 2016–2024</p>
+        <div class="project-tech">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg" width="24" alt="sklearn"/>
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" width="24" alt="Pandas"/>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Ashish202418007/Mean-Reversion-Strategy-Using-Clustering" class="project-link"><i class="fab fa-github"></i> Code</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. Granger Causality Food-GDP -->
+    <div class="project-card">
+      <div class="project-img" style="background-image: url('assets/granger-food.png'); background-size: cover; background-position: center;"></div>
+      <div class="project-content">
+        <h3>Granger Causality: Food & GDP</h3>
+        <p>20-year data | 10K+ restaurants | India</p>
+        <div class="project-tech">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="24" alt="Python"/>
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tableau/tableau-original.svg" width="24" alt="Tableau"/>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/AshishKar" class="project-link"><i class="fab fa-github"></i> Code</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. A/B Testing Landing Page -->
+    <div class="project-card">
+      <div class="project-img" style="background-image: url('assets/ab-testing.png'); background-size: cover; background-position: center;"></div>
+      <div class="project-content">
+        <h3>A/B Testing: Landing Page</h3>
+        <p>6.22 vs 4.53 min | 66% vs 42% conv | p < 0.01</p>
+        <div class="project-tech">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="24" alt="Python"/>
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" width="24" alt="Jupyter"/>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Misty033/a-b-testing-landing-page-optimization" class="project-link"><i class="fab fa-github"></i> Code</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
 
   <!-- Experience, Education, Achievements, Contact, Footer -->
   <!-- Experience -->
@@ -835,8 +950,8 @@
         <p>Rank 2 (Sem 1) & Rank 3 (Sem 2)</p>
       </div>
       <div class="timeline-item">
-        <div class="timeline-date">2024–2025</div>
-        <h3>Open Source</h3>
+        <div class="timeline-date">2024–Present</div>
+        <h3>Open Source Contribution</h3>
         <p>3 Kaggle, 2 HF, 4 Docker, 6+ GitHub repos</p>
       </div>
     </div>
