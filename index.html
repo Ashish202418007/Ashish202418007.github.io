@@ -239,49 +239,47 @@
       width: 380px;
       height: 380px;
       pointer-events: none;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 0 60px rgba(0,255,136,0.3);
     }
     .profile-image img {
       width: 100%;
       height: 100%;
-      border-radius: 50%;
       object-fit: cover;
-      box-shadow: 0 0 40px rgba(0,255,136,0.3);
       animation: pulse 8s ease-in-out infinite;
     }
     @keyframes pulse {
-      0%, 100% { transform: scale(1) rotate(0deg); }
-      50% { transform: scale(1.05) rotate(2deg); }
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
     }
-    /* Stats */
-    .stats {
+    /* Stats Overlay on Profile */
+    .profile-stats {
       position: absolute;
-      right: 5%;
-      top: 50%;
-      transform: translateY(-50%);
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
       display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
+      gap: 1rem;
       z-index: 3;
+      background: rgba(10,14,39,0.7);
+      backdrop-filter: blur(10px);
+      padding: 0.8rem 1.2rem;
+      border-radius: 50px;
+      border: 1px solid var(--border);
     }
     .stat-card {
-      padding: 1.2rem 1.8rem;
-      background: var(--glass);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      min-width: 140px;
       text-align: center;
-      opacity: 0;
-      transform: translateX(30px);
+      min-width: 80px;
     }
     .stat-card strong {
       display: block;
-      font-size: 1.8rem;
+      font-size: 1.4rem;
       color: var(--primary);
       font-weight: 700;
     }
     .stat-card span {
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       color: var(--text-dim);
       font-weight: 500;
     }
@@ -317,87 +315,33 @@
       margin: 0 auto;
       line-height: 1.7;
     }
-    /* Skills */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-    .skill-card {
-      padding: 2.2rem;
-      background: var(--glass);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      transition: all 0.4s ease;
-      position: relative;
-      overflow: hidden;
+    /* Skills with Icons */
+    .skills-category {
+      margin-bottom: 3rem;
       opacity: 0;
       transform: translateY(30px);
     }
-    .skill-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: var(--gradient);
-      opacity: 0;
-      transition: opacity 0.4s;
-      z-index: 0;
-    }
-    .skill-card:hover {
-      transform: translateY(-10px);
-      border-color: rgba(0,255,136,0.4);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    }
-    .skill-card:hover::before {
-      opacity: 0.1;
-    }
-    .skill-icon {
-      width: 48px;
-      height: 48px;
-      background: rgba(0,255,136,0.15);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.2rem;
-      position: relative;
-      z-index: 1;
-    }
-    .skill-icon i {
-      font-size: 1.5rem;
-      color: var(--primary);
-    }
-    .skill-card h3 {
+    .skills-category h3 {
       font-size: 1.4rem;
-      margin-bottom: 0.8rem;
-      position: relative;
-      z-index: 1;
+      margin-bottom: 1.2rem;
+      color: var(--primary);
       font-weight: 600;
     }
-    .skill-card p {
-      color: var(--text-dim);
-      line-height: 1.7;
-      position: relative;
-      z-index: 1;
-      margin-bottom: 1rem;
-      font-size: 0.95rem;
-    }
-    .tech-stack {
+    .skills-icons {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.6rem;
-      position: relative;
-      z-index: 1;
+      gap: 1.2rem;
+      align-items: center;
     }
-    .tech-tag {
-      padding: 0.35rem 0.9rem;
-      background: rgba(0,255,136,0.12);
-      border: 1px solid rgba(0,255,136,0.25);
+    .skills-icons img {
+      transition: transform 0.3s ease;
+    }
+    .skills-icons img:hover {
+      transform: translateY(-4px);
+    }
+    .badge {
+      height: 30px !important;
       border-radius: 6px;
-      font-size: 0.78rem;
-      color: var(--primary);
-      font-weight: 500;
     }
     /* Projects */
     .projects-grid {
@@ -422,7 +366,7 @@
     }
     .project-img {
       width: 100%;
-      height: 240px;
+      height: 200px;
       background: var(--gradient);
       background-size: 200%;
       position: relative;
@@ -449,31 +393,42 @@
       100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
     }
     .project-content {
-      padding: 2rem;
+      padding: 1.8rem;
     }
     .project-card h3 {
-      font-size: 1.45rem;
-      margin-bottom: 0.8rem;
+      font-size: 1.3rem;
+      margin-bottom: 0.6rem;
       font-weight: 600;
+      line-height: 1.4;
     }
     .project-card p {
       color: var(--text-dim);
-      line-height: 1.7;
-      margin-bottom: 1.5rem;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .project-tech img {
+      height: 24px;
+      width: auto;
     }
     .project-links {
       display: flex;
       gap: 1rem;
     }
     .project-link {
-      padding: 0.6rem 1.2rem;
+      padding: 0.5rem 1rem;
       background: rgba(0,255,136,0.12);
       border: 1px solid rgba(0,255,136,0.25);
       border-radius: 8px;
       color: var(--primary);
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 500;
       transition: all 0.3s;
       display: flex;
@@ -483,13 +438,6 @@
     .project-link:hover {
       background: rgba(0,255,136,0.25);
       transform: translateX(4px);
-    }
-    .project-items {
-      list-style-type: disc;
-      padding-left: 1.5rem;
-      color: var(--text-dim);
-      font-size: 0.95rem;
-      line-height: 1.7;
     }
     /* Timeline */
     .timeline {
@@ -554,6 +502,9 @@
     .timeline-items {
       list-style-type: disc;
       padding-left: 1.5rem;
+      color: var(--text-dim);
+      font-size: 0.92rem;
+      line-height: 1.6;
     }
     /* Contact */
     .contact-container {
@@ -643,8 +594,20 @@
         padding-top: 7rem;
         text-align: center;
       }
-      .profile-image, .stats {
-        display: none;
+      .profile-image {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        width: 200px;
+        height: 200px;
+        margin: 2rem auto;
+      }
+      .profile-stats {
+        position: static;
+        transform: none;
+        margin: 1rem auto;
+        justify-content: center;
       }
       .cta-group {
         flex-direction: column;
@@ -663,6 +626,9 @@
         left: -6px;
         width: 12px;
         height: 12px;
+      }
+      .skills-icons {
+        justify-content: center;
       }
     }
   </style>
@@ -695,7 +661,7 @@
     <div class="hero-content">
       <span class="hero-label">Available for Data Science Roles</span>
       <h1>Advancing <span class="gradient-text">AI & ML Solutions</span></h1>
-      <p class="hero-desc">Pursuing M.Sc. in Data Science, specializing in NER, Knowledge Graphs, recommendation systems, and production ML pipelines for energy and finance domains.</p>
+      <p class="hero-desc">M.Sc. Data Science @ DA-IICT | Active Learning NER | Agentic Knowledge Graphs | Recommender Systems</p>
       <div class="cta-group">
         <a href="#work" class="btn btn-primary"><i class="fas fa-briefcase"></i> View Projects</a>
         <a href="#contact" class="btn btn-secondary"><i class="fas fa-envelope"></i> Get in Touch</a>
@@ -703,11 +669,11 @@
     </div>
     <div class="profile-image">
       <img src="https://avatars.githubusercontent.com/u/176426085?v=4" alt="Ashish Kar">
-    </div>
-    <div class="stats">
-      <div class="stat-card"><strong>9.12</strong><span>CPI M.Sc.</span></div>
-      <div class="stat-card"><strong>6+</strong><span>GitHub Repos</span></div>
-      <div class="stat-card"><strong>1</strong><span>Paper Submitted</span></div>
+      <div class="profile-stats">
+        <div class="stat-card"><strong>9.12</strong><span>CPI</span></div>
+        <div class="stat-card"><strong>6+</strong><span>Repos</span></div>
+        <div class="stat-card"><strong>1</strong><span>Paper</span></div>
+      </div>
     </div>
   </section>
 
@@ -716,56 +682,50 @@
     <div class="section-header">
       <div class="section-label">Core Competencies</div>
       <h2 class="section-title">Technical Skills</h2>
-      <p class="section-desc">Expertise in modern ML tools and technologies</p>
+      <p class="section-desc">Production-ready tools and frameworks</p>
     </div>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <div class="skill-icon"><i class="fas fa-code"></i></div>
-        <h3>Programming Languages</h3>
-        <p>Languages for data processing and scripting</p>
-        <div class="tech-stack">
-          <span class="tech-tag">Python</span>
-          <span class="tech-tag">SQL</span>
-          <span class="tech-tag">Basic Bash</span>
-        </div>
+
+    <div class="skills-category">
+      <h3>Languages & ML Frameworks</h3>
+      <div class="skills-icons">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="40" height="40" alt="Python"/>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" width="40" height="40" alt="PyTorch"/>
+        <img src="https://github.com/devicons/devicon/blob/v2.17.0/icons/scikitlearn/scikitlearn-original.svg" width="40" height="40" alt="Scikit-learn"/>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" width="40" height="40" alt="Pandas"/>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" width="40" height="40" alt="Jupyter"/>
+        <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" width="40" height="40" alt="Hugging Face"/>
+        <img src="https://langchain.com/img/brand/wordmark.png" width="100" height="40" alt="LangChain" style="filter: brightness(0) invert(1);"/>
       </div>
-      <div class="skill-card">
-        <div class="skill-icon"><i class="fas fa-brain"></i></div>
-        <h3>Machine Learning & AI</h3>
-        <p>Frameworks for building and optimizing ML models</p>
-        <div class="tech-stack">
-          <span class="tech-tag">PyTorch</span>
-          <span class="tech-tag">Scikit-learn</span>
-          <span class="tech-tag">Pandas</span>
-          <span class="tech-tag">Optuna</span>
-          <span class="tech-tag">Ollama</span>
-          <span class="tech-tag">LangChain</span>
-          <span class="tech-tag">Hugging Face</span>
-          <span class="tech-tag">CrewAI</span>
-        </div>
+    </div>
+
+    <div class="skills-category">
+      <h3>Big Data & Workflow Orchestration</h3>
+      <div class="skills-icons">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachespark/apachespark-original.svg" width="40" height="40" alt="Spark"/>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg" width="40" height="40" alt="Kafka"/>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apacheairflow/apacheairflow-original.svg" width="40" height="40" alt="Airflow"/>
       </div>
-      <div class="skill-card">
-        <div class="skill-icon"><i class="fas fa-tools"></i></div>
-        <h3>MLOps & Big Data</h3>
-        <p>Tools for deployment, versioning, and data pipelines</p>
-        <div class="tech-stack">
-          <span class="tech-tag">MLflow</span>
-          <span class="tech-tag">DVC</span>
-          <span class="tech-tag">Docker</span>
-          <span class="tech-tag">Git</span>
-          <span class="tech-tag">PySpark</span>
-          <span class="tech-tag">Apache Kafka</span>
-          <span class="tech-tag">Apache Airflow</span>
-        </div>
+    </div>
+
+    <div class="skills-category">
+      <h3>MLOps & Experimentation</h3>
+      <div class="skills-icons">
+        <img src="https://img.shields.io/badge/MLflow-0194E2?style=for-the-badge&logo=mlflow&logoColor=white" class="badge" alt="MLflow"/>
+        <img src="https://img.shields.io/badge/DVC-945DD6?style=for-the-badge&logo=dvc&logoColor=white" class="badge" alt="DVC"/>
+        <img src="https://img.shields.io/badge/Optuna-4928A1?style=for-the-badge&logo=optuna&logoColor=white" class="badge" alt="Optuna"/>
+        <img src="https://img.shields.io/badge/Ollama-000000?style=for-the-badge&logo=ollama&logoColor=white" class="badge" alt="Ollama"/>
+        <img src="https://img.shields.io/badge/CrewAI-FF6B6B?style=for-the-badge" class="badge" alt="CrewAI"/>
       </div>
-      <div class="skill-card">
-        <div class="skill-icon"><i class="fas fa-cloud"></i></div>
-        <h3>Cloud Platforms</h3>
-        <p>Services for storage, compute, and data management</p>
-        <div class="tech-stack">
-          <span class="tech-tag">AWS (S3, EC2)</span>
-          <span class="tech-tag">GCP (Cloud Run, BigQuery, GCS)</span>
-        </div>
+    </div>
+
+    <div class="skills-category">
+      <h3>DevOps & Cloud</h3>
+      <div class="skills-icons">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="40" height="40" alt="Docker"/>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="40" height="40" alt="Git"/>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" width="40" height="40" alt="Bash"/>
+        <img src="https://github.com/devicons/devicon/blob/v2.17.0/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" width="40" height="40" alt="AWS"/>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" width="40" height="40" alt="GCP"/>
       </div>
     </div>
   </section>
@@ -775,175 +735,97 @@
     <div class="section-header">
       <div class="section-label">Portfolio</div>
       <h2 class="section-title">Projects</h2>
-      <p class="section-desc">Hands-on projects in ML, data analysis, and AI applications</p>
+      <p class="section-desc">Key AI/ML implementations</p>
     </div>
     <div class="projects-grid">
       <div class="project-card">
         <div class="project-img"></div>
         <div class="project-content">
-          <h3>Domain-Adaptive Fine-tuning of Gemma-3 for Financial News QnA | Unsloth, trl, MLflow, Transformers, LoRA</h3>
-          <ul class="project-items">
-            <li>Fine-tuned Gemma-3 (270M) on NewsQA (78k samples) and FinancialQA (10k samples) datasets using Unsloth and trl SFTTrainer, achieving efficient training through low-rank adaptation and quantization techniques.</li>
-            <li>Enhanced model performance while training only about 1% of parameters, raising F1 from 0.128 to 0.628 and Exact Match from 0 to 0.465 over the pretrained baseline.</li>
-            <li>Implemented experiment tracking and hyperparameter management with MLflow, and deployed the fine-tuned model on Hugging Face for inference, enabling seamless integration with cloud platforms such as AWS SageMaker and Google Vertex AI.</li>
-          </ul>
+          <h3>Gemma-3 Financial QnA Fine-tune</h3>
+          <p>F1: 0.128 → 0.628 | LoRA + Unsloth | Deployed on HF</p>
+          <div class="project-tech">
+            <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="HF"/>
+            <img src="https://langchain.com/img/brand/wordmark.png" alt="LangChain" style="filter: brightness(0) invert(1); height:20px;"/>
+          </div>
           <div class="project-links">
             <a href="https://github.com/Ashish202418007/LLM-Gemma3-270m-finetune-for-financialQA-Application.git" class="project-link"><i class="fab fa-github"></i> Code</a>
           </div>
         </div>
       </div>
+
       <div class="project-card">
         <div class="project-img"></div>
         <div class="project-content">
-          <h3>Credit Card Churn Prediction with Explainable AI | Python, Scikit-learn, LightGBM, Docker, SHAP, LIME</h3>
-          <ul class="project-items">
-            <li>Engineered end-to-end ML pipeline with advanced preprocessing, feature selection, and class imbalance handling achieving 0.89 macro F1-score.</li>
-            <li>Integrated SHAP and LIME for comprehensive model explainability, enabling transparent feature impact analysis, prediction interpretation and decision making.</li>
-            <li>Deployed scalable real-time inference system on Google Cloud Run (earlier on AWS EC2) with FastAPI backend and Streamlit UI, containerized with Docker and tested on 70+ users.</li>
-          </ul>
+          <h3>Credit Card Churn Prediction</h3>
+          <p>0.89 F1 | SHAP + LIME | GCP Cloud Run</p>
+          <div class="project-tech">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg" width="24" alt="sklearn"/>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="24" alt="Docker"/>
+          </div>
           <div class="project-links">
             <a href="https://github.com/Misty033/Credit_Card_Churn_Detection" class="project-link"><i class="fab fa-github"></i> Code</a>
           </div>
         </div>
       </div>
+
       <div class="project-card">
         <div class="project-img"></div>
         <div class="project-content">
-          <h3>Recommendation System & Analytics Using Beer Reviews | Airflow, DBT, BigQuery, Glove, MLflow</h3>
-          <ul class="project-items">
-            <li>Engineered a scalable ELT pipeline processing 4.5M beer reviews from PostgreSQL into an analytics-ready star schema in BigQuery, orchestrated with Airflow and transformed via DBT - ensuring low-latency analytics for large-scale datasets.</li>
-            <li>Built a content-based recommender system using aspect-based Glove embeddings, achieving improved recommendation.</li>
-            <li>Integrated FAISS for efficient large-scale similarity search, enhancing retrieval speed and quality in the recommender system. Implemented experiment tracking and reproducibility using MLflow for model versioning.</li>
-          </ul>
+          <h3>Beer Review Recommender</h3>
+          <p>4.5M reviews | Airflow + DBT | FAISS</p>
+          <div class="project-tech">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apacheairflow/apacheairflow-original.svg" width="24" alt="Airflow"/>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" width="24" alt="GCP"/>
+          </div>
           <div class="project-links">
             <a href="https://github.com/Ashish202418007/ELT-For-MLmodels" class="project-link"><i class="fab fa-github"></i> Code</a>
           </div>
         </div>
       </div>
+
       <div class="project-card">
         <div class="project-img"></div>
         <div class="project-content">
-          <h3>Market Basket Analysis & Customer Segmentation Dashboard | Python, Scikit-learn, Association Mining, RFM Analysis</h3>
-          <ul class="project-items">
-            <li>Developed an interactive customer segmentation and market basket analysis pipeline using RFM metrics, cohort analysis, and association rule mining to uncover key purchasing behaviors.</li>
-            <li>Implemented K-Means clustering and RFM-based segmentation for customer profiling, enabling data-driven retention strategies.</li>
-            <li>Applied the FP-Growth algorithm from Orange3 to generate high-confidence association rules, enhancing product bundling and cross-selling recommendations.</li>
-          </ul>
+          <h3>Market Basket Analysis</h3>
+          <p>RFM + FP-Growth | K-Means Clustering</p>
+          <div class="project-tech">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="24" alt="Python"/>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg" width="24" alt="sklearn"/>
+          </div>
           <div class="project-links">
             <a href="https://github.com/Ashish202418007/Market-Busket-Analysis" class="project-link"><i class="fab fa-github"></i> Code</a>
           </div>
         </div>
       </div>
+
       <div class="project-card">
         <div class="project-img"></div>
         <div class="project-content">
-          <h3>Eigenportfolio: PCA-based Portfolio Optimization | Python, NumPy, Pandas, scikit-learn, Matplotlib</h3>
-          <ul class="project-items">
-            <li>Developed a PCA-based portfolio optimization framework to construct eigenportfolios to enhance diversification and risk-adjusted returns across 419 assets.</li>
-            <li>Constructed diversified, low-concentration portfolios to capture uncorrelated risk factors on historical data from 2000–2013, using the framework.</li>
-            <li>Achieved 72.64% CAGR with a 1.77 Sharpe Ratio for the best Sharpe eigenportfolio, demonstrating strong risk-adjusted performance over benchmarks.</li>
-          </ul>
+          <h3>PCA Eigenportfolio</h3>
+          <p>72.64% CAGR | 1.77 Sharpe | 419 assets</p>
+          <div class="project-tech">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" width="24" alt="Pandas"/>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" width="24" alt="NumPy"/>
+          </div>
           <div class="project-links">
             <a href="https://github.com/Ashish202418007/Eigenportfolio-Using-PCA" class="project-link"><i class="fab fa-github"></i> Code</a>
           </div>
         </div>
       </div>
+
       <div class="project-card">
         <div class="project-img"></div>
         <div class="project-content">
-          <h3>BERT-based Review Classifier Using Metric learning | PyTorch, Transformers, DVC, MLflow, DockerHub</h3>
-          <ul class="project-items">
-            <li>Developed BERT-based sentiment classifier with triplet loss achieving 0.75 F1-score in 7 iterations on 4,200 annotated reviews.</li>
-            <li>Designed efficient pipeline processing 1.3M Amazon reviews using statistical sampling under compute constraints. Used DVC and Mlflow for dataset and experiment tracking throughout the active learning cycle.</li>
-            <li>Implemented dynamic hybrid sampling strategy in active learning loop combining informativeness and representativeness for improved generalization.</li>
-          </ul>
+          <h3>BERT Triplet Loss Classifier</h3>
+          <p>0.75 F1 | 1.3M reviews | Active Learning</p>
+          <div class="project-tech">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" width="24" alt="PyTorch"/>
+            <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" width="24" alt="HF"/>
+          </div>
           <div class="project-links">
             <a href="https://github.com/Yashrajsinh012/Sentiment_Analysis" class="project-link"><i class="fab fa-github"></i> Code</a>
           </div>
         </div>
-      </div>
-      <div class="project-card">
-        <div class="project-img"></div>
-        <div class="project-content">
-          <h3>Market Structure Analysis of Indian Equities for pair trading | Scikit-learn, Pandas, Statsmodels</h3>
-          <ul class="project-items">
-            <li>Applied hierarchical clustering on partial correlation matrices (on the data of 2016-2024) to uncover systemic co-movements in Indian stock market (NIFTY50) and identified statistically significant clusters in IT sector stocks (Monte Carlo p=0.011, modularity ≈ 0.45).</li>
-            <li>Validated robustness using bootstrap stability (0.55), temporal out-of-sample testing (ARI=0.22), and cointegration-based filtering of intra-cluster stock pairs.</li>
-            <li>Insights applicable to portfolio diversification, sector risk monitoring, and identification of potential statistical arbitrage opportunities.</li>
-          </ul>
-          <div class="project-links">
-            <a href="https://github.com/Ashish202418007/Mean-Reversion-Strategy-Using-Clustering" class="project-link"><i class="fab fa-github"></i> Code</a>
-          </div>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-img"></div>
-        <div class="project-content">
-          <h3>Granger Causality Between GDP Per Capita - Food Consumption | Tableau, Python, Statistical Analysis</h3>
-          <ul class="project-items">
-            <li>Analyzed 20-year household consumption data and 10K+ restaurant records revealing consumption trends and expenditure patterns.</li>
-            <li>Established Granger causality relationship between processed food consumption and GDP growth in India using statistical modeling</li>
-          </ul>
-          <div class="project-links">
-            <a href="https://github.com/AshishKar" class="project-link"><i class="fab fa-github"></i> Code</a>
-          </div>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-img"></div>
-        <div class="project-content">
-          <h3>A/B Testing for Landing Page Optimization | Python, Statistics, Data Visualization</h3>
-          <ul class="project-items">
-            <li>Designed and analyzed an A/B test with 100 users using a two-sample t-test, revealing a significant increase in user engagement on the new landing page (6.22 min vs. 4.53 min, p = 0.00014), indicating improved content relevance and usability.</li>
-            <li>Validated a rise in conversion rate from 42% to 66% on the redesigned page through a two-proportion Z-test (p = 0.008), providing data-driven evidence to support adoption of the new design.</li>
-            <li>Explored user behavior by language using a chi-square test; while not statistically significant (p = 0.21), EDA highlighted that French users converted 75% higher and Spanish users 36% higher, informing localization and targeting strategies.</li>
-          </ul>
-          <div class="project-links">
-            <a href="https://github.com/Misty033/a-b-testing-landing-page-optimization" class="project-link"><i class="fab fa-github"></i> Code</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Education -->
-  <section id="education">
-    <div class="section-header">
-      <div class="section-label">Academic Background</div>
-      <h2 class="section-title">Education</h2>
-    </div>
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-date">2024 – Present</div>
-        <h3>M.Sc. Data Science</h3>
-        <h4>Dhirubhai Ambani University (Formerly DA-IICT)</h4>
-        <p>CPI: 9.12/10.0</p>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-date">2020 – 2023</div>
-        <h3>B.Sc. Physics Honours</h3>
-        <h4>St. Paul’s Cathedral Mission College, University of Calcutta</h4>
-        <p>CGPA: 8.22/10.0</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Achievements -->
-  <section id="achievements">
-    <div class="section-header">
-      <div class="section-label">Honors</div>
-      <h2 class="section-title">Achievements & Recognition</h2>
-    </div>
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-date">2024</div>
-        <h3>Merit-Based Scholarship</h3>
-        <p>Secured Rank 2 in Semester 1 and Rank 3 in Semester 2, M.Sc. Data Science</p>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-date">Dec 2024 - Oct 2025</div>
-        <h3>Open Source Contribution</h3>
-        <p>Published 3 Kaggle datasets, 2 Hugging Face models, 4 Docker images, and 6+ GitHub repositories with reproducible code for community use.</p>
       </div>
     </div>
   </section>
@@ -958,11 +840,51 @@
       <div class="timeline-item">
         <div class="timeline-date">Dec 2024 – Present</div>
         <h3>Research Intern</h3>
-        <h4>BSES Smart Energy Learning Centre, Gandhinagar, Gujarat</h4>
+        <h4>BSES Smart Energy Learning Centre</h4>
         <ul class="timeline-items">
-          <li>Active Learning-Driven NER for Solar News: Engineered domain-specific NER model on 57K solar news articles with custom 17-entity ontology, achieving 0.83 F1-score improvement using only 8% annotated data through iterative active learning framework.</li>
-          <li>Sequential Agentic Generation of Knowledge Graphs for Retrieval Augmented Reasoning: Orchestrated end-to-end multi-agent agentic Knowledge Graph generation pipeline processing 200+ policy documents and 3 QA datasets, achieving 90-95% node integration with prompt-optimized entity-relation extraction and cost-reduced orchestration. Developed comprehensive evaluation pipeline benchmarking agentic KG construction against SOTA approaches (OpenIE, GraphRAG, HippoRAG2) with improved QA accuracy metrics (Paper submitted at ICDE 2026, Montreal, Canada).</li>
+          <li>Active Learning NER: 0.83 F1 gain with 8% labels</li>
+          <li>Agentic KG Pipeline: 90–95% node integration | ICDE 2026</li>
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education">
+    <div class="section-header">
+      <div class="section-label">Academic Background</div>
+      <h2 class="section-title">Education</h2>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">2024 – Present</div>
+        <h3>M.Sc. Data Science</h3>
+        <h4>DA-IICT | CPI: 9.12/10.0</h4>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2020 – 2023</div>
+        <h3>B.Sc. Physics Hons.</h3>
+        <h4>University of Calcutta | CGPA: 8.22/10.0</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements -->
+  <section id="achievements">
+    <div class="section-header">
+      <div class="section-label">Honors</div>
+      <h2 class="section-title">Achievements</h2>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">2024</div>
+        <h3>Merit Scholarship</h3>
+        <p>Rank 2 (Sem 1) & Rank 3 (Sem 2)</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2024–2025</div>
+        <h3>Open Source</h3>
+        <p>3 Kaggle, 2 HF, 4 Docker, 6+ GitHub repos</p>
       </div>
     </div>
   </section>
@@ -1027,7 +949,7 @@
         follower.style.transform = `translate(${posX - 250}px, ${posY - 250}px)`;
       }
     });
-    document.querySelectorAll('a, button, .project-card, .skill-card').forEach(el => {
+    document.querySelectorAll('a, button, .project-card').forEach(el => {
       el.addEventListener('mouseenter', () => cursor.style.transform = 'scale(2)');
       el.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)');
     });
@@ -1055,18 +977,17 @@
       duration: 1,
       ease: 'power3.out'
     });
-    gsap.utils.toArray('.section-header').forEach(header => {
-      gsap.to(header, {
+    gsap.utils.toArray('.section-header, .skills-category').forEach(el => {
+      gsap.to(el, {
         y: 0,
         opacity: 1,
         duration: 1,
-        scrollTrigger: { trigger: header, start: 'top 80%' }
+        scrollTrigger: { trigger: el, start: 'top 80%' }
       });
     });
-    gsap.utils.toArray('.skill-card, .project-card, .timeline-item, .stat-card').forEach((el, i) => {
+    gsap.utils.toArray('.project-card, .timeline-item').forEach((el, i) => {
       gsap.to(el, {
         y: 0,
-        x: 0,
         opacity: 1,
         duration: 0.8,
         delay: i * 0.1,
